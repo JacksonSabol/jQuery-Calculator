@@ -3,19 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>jQuery Calculator</title>
-
-  <!-- Added link to the jQuery Library -->
+  <title>jQuery Calculator - iPhone Style</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  <!-- Jumbotron for Title -->
   <div class="jumbotron">
     <h1 class="text-center">jQuery Calculator</h1>
     <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
@@ -24,8 +19,6 @@
   <div class="container">
 
     <div class="row">
-
-      <!-- Calculator Panel -->
       <div class="col-lg-4">
         <div class="card">
           <h3 class="card-header">Calculator</h3>
@@ -89,8 +82,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Result Panel -->
       <div class="col-lg-6">
         <div class="card">
           <h3 class="card-header">Result</h3>
@@ -115,31 +106,21 @@
       $(".btn").on("click", function () {
         var btnClicked = $(this).val();
         if (btnClicked != "=" && btnClicked != "clear") {
-          // var btnClicked = parseInt(btnClicked);
           $(btnClickedArray.push(btnClicked));
           var equation = btnClickedArray.join("");
-          // console.log(btnClicked);
-          // console.log(btnClickedArray);
           $("#result").text(equation);
         }
         if (btnClicked === "=") {
-          for(i = 0; i < btnClickedArray.length; i++){
-            if (btnClickedArray[i]==="^"){
-              btnClickedArray[i]="**";
+          for (i = 0; i < btnClickedArray.length; i++) {
+            if (btnClickedArray[i] === "^") {
+              btnClickedArray[i] = "**";
             }
           }
           calculation = btnClickedArray.join("");
           var result = eval(calculation);
-          // console.log("Inside: " + calculation);
-          // console.log("Inside: " + result);
           $("#result").text(result);
           clearMe();
-          // var btnClickedArray = [];
         }
-        // console.log("Outside: " + btnClickedArray);
-        // console.log("outside: " + calculation);
-        // console.log("outside: " + result);
-        // console.log("Outside: " + result);
       });
       $("#button-clear").on("click", function () {
         $("#result").empty();
@@ -148,12 +129,7 @@
       function clearMe() {
         btnClickedArray = [];
       };
-
-
     });
-// a way around setting operator 'value' to the symbol
-// Set the HTML of the #operator to the text of what was clicked
-// $("#operator").text($(this).text());
   </script>
 
 </body>
